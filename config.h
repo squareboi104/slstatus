@@ -44,8 +44,8 @@ static const char unknown_str[] = "n/a";
  * ram_perc            memory usage in percent         NULL
  * ram_total           total memory size in GB         NULL
  * ram_used            used memory in GB               NULL
- * run_command         custom shell command            command (echo foo)
- * separator           string to echo                  NULL
+ * run_command         custom shell command            command (printf foo)
+ * separator           string to printf                  NULL
  * swap_free           free swap in GB                 NULL
  * swap_perc           swap usage in percent           NULL
  * swap_total          total swap size in GB           NULL
@@ -65,13 +65,15 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    {cpu_perc,    "|| [CPU %s%] -", NULL },
+    { cpu_perc,    "|| [CPU %s%] -", NULL },
 
-	{ram_perc,    " [RAM %s%] -", NULL },
+	{ ram_perc,    " [RAM %s%] -", NULL },
 
-	{run_command, " [VOL%4s] -", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
+	{ run_command, " [VOL%4s] -", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
     
     //{ keymap,     " [KMAP %s] -", NULL },
 
-	{ datetime,   " [%s] ||", "%F %T" },
+	{ datetime,   " [%s] -", "%F %T" },
+
+    {run_command, " [%s] ||", "echo ' '" },
 };
