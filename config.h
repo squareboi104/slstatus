@@ -81,5 +81,5 @@ static const struct arg args[] = {
     
 //  { keymap,     " [KMAP %s] -", NULL },
 
-    {run_command, "%s ", "echo ' '" },
+    {run_command, "%s", "echo ' '" },
 };
